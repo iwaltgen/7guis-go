@@ -1,9 +1,9 @@
 # 7GUIs using Go
 
-An implementation of the [7 GUIs challenges](https://eugenkiss.github.io/7guis/)
-using the [Gio](https://gioui.org/) / [Fyne](https://fyne.io) toolkit.
+An implementation of the [7 GUIs challenges](https://eugenkiss.github.io/7guis/) with Go.
 
-> Fyne implemention references [fyne-io/7guis](https://github.com/fyne-io/7guis) repository.
+- [Gio](https://gioui.org/)
+- [Fyne](https://fyne.io)
 
 ## Counter
 

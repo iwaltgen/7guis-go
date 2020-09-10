@@ -1,4 +1,4 @@
-module github.com/iwaltgen/7guis-gio-fyne
+module github.com/iwaltgen/7guis-go
 
 go 1.15
 
