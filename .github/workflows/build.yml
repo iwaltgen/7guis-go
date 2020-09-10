@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - name: Install Native Dependencies
-      run: apt install libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
+      run: sudo apt install libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
       if: matrix.os == 'ubuntu-latest'
 
     - uses: actions/setup-go@v2
