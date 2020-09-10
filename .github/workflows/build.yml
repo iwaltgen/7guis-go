@@ -19,7 +19,7 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get update
-        sudo apt-get install libwayland-dev libx11-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
+        sudo apt-get install libwayland-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev libgl1-mesa-dev xorg-dev
 
     - uses: actions/setup-go@v2
       with:
