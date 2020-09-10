@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 
 	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
@@ -63,7 +64,11 @@ func build(goexe, source string) error {
 		return fmt.Errorf("mkdir error: %w", err)
 	}
 
-	return sh.RunV(goexe, "build", "-trimpath", "-ldflags", "-s -w", "-o", file, source)
+	ldflags := "-s -w"
+	if runtime.GOOS == "windows" {
+		ldflags = ldflags + " -H windowsgui"
+	}
+	return sh.RunV(goexe, "build", "-trimpath", "-ldflags", ldflags, "-o", file, source)
 }
 
 func UPX() {
