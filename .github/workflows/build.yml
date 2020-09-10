@@ -30,4 +30,4 @@ jobs:
 
     - name: build
       run: |
-        go run mage.go build
+        go run mage.go buildGio

@@ -16,12 +16,29 @@ func Clean() {
 	os.RemoveAll("build")
 }
 
-func Build() error {
+func Build() {
+	mg.Deps(BuildGio, BuildFyne)
+}
+
+func BuildGio() error {
+	sources := []string{
+		"./gio/counter",
+		"./gio/temperature-converter",
+	}
+
+	goexe := mg.GoCmd()
+	for _, source := range sources {
+		if err := build(goexe, source); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func BuildFyne() error {
 	sources := []string{
 		"./fyne/counter",
 		"./fyne/temperature-converter",
-		"./gio/counter",
-		"./gio/temperature-converter",
 	}
 
 	goexe := mg.GoCmd()
