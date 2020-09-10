@@ -10,15 +10,16 @@ jobs:
   build:
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest, windows-latest]
-        os: [macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         go: [1.14.x, 1.15.x]
     runs-on: ${{ matrix.os }}
 
     steps:
-    - name: Install Native Dependencies
-      run: sudo apt-get install libwayland-dev libx11-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
+    - name: Install dependencies
       if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install libwayland-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
 
     - uses: actions/setup-go@v2
       with:
@@ -29,9 +30,9 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        key: ${{ matrix.os }}-go-${{ matrix.go }}-${{ hashFiles('**/go.sum') }}
         restore-keys: |
-          ${{ runner.os }}-go-
+          ${{ runner.os }}-go-${{ matrix.go }}-
 
     - name: build
       run: |
