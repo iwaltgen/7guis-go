@@ -8,20 +8,16 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        go: [1.14.x, 1.15.x]
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
     - name: Install Native Dependencies
-      run: sudo apt install libwayland-dev libx11-dev libx11-xcb-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
+      run: sudo apt-get install libwayland-dev libx11-dev libxkbcommon-x11-dev libgles2-mesa-dev libegl1-mesa-dev libffi-dev
       if: matrix.os == 'ubuntu-latest'
 
     - uses: actions/setup-go@v2
       with:
-        go-version: ${{ matrix.go }}
+        go-version: 1.15.x
 
     - uses: actions/checkout@v1
 
