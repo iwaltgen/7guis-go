@@ -18,7 +18,7 @@ func Clean() {
 }
 
 func Build() {
-	mg.Deps(BuildGio, BuildFyne)
+	mg.Deps(BuildGio, BuildFyne, BuildLorca)
 }
 
 func BuildGio() error {
@@ -51,6 +51,20 @@ func BuildFyne() error {
 	return nil
 }
 
+func BuildLorca() error {
+	sources := []string{
+		"./lorca/counter",
+	}
+
+	goexe := mg.GoCmd()
+	for _, source := range sources {
+		if err := build(goexe, source); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
 func build(goexe, source string) error {
 	dir := filepath.Join("build", filepath.Dir(source))
 	file := filepath.Join("build", source)
@@ -62,6 +76,10 @@ func build(goexe, source string) error {
 
 	if err := os.MkdirAll(dir, os.ModePerm); err != nil {
 		return fmt.Errorf("mkdir error: %w", err)
+	}
+
+	if err := sh.RunV(goexe, "generate", source); err != nil {
+		return err
 	}
 
 	ldflags := "-s -w"

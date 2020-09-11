@@ -42,3 +42,7 @@ jobs:
       if: matrix.os != 'ubuntu-latest'
       run: |
         go run mage.go buildFyne
+
+    - name: Build Lorca
+      run: |
+        go run mage.go buildLorca
