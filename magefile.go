@@ -25,6 +25,7 @@ func BuildGio() error {
 	sources := []string{
 		"./gio/counter",
 		"./gio/temperature-converter",
+		"./gio/timer",
 	}
 
 	goexe := mg.GoCmd()
