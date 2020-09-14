@@ -25,3 +25,12 @@ Challenges: bidirectional data flow, user-provided text input.
   <img src="fyne/image/temperature-converter.png" width="400" alt="fyne" />
 </span>
 
+
+## Timer
+
+Challenges: concurrency, competing user/signal interactions, responsiveness.
+
+<span>
+  <img src="gio/image/timer.png" width="400" alt="gio" />
+</span>
+

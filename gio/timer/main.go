@@ -21,8 +21,8 @@ func main() {
 	go func() {
 		window := app.NewWindow(
 			app.Title("Timer"),
-			app.MinSize(unit.Dp(400), unit.Dp(200)),
-			app.Size(unit.Dp(400), unit.Dp(200)),
+			app.MinSize(unit.Dp(380), unit.Dp(200)),
+			app.Size(unit.Dp(380), unit.Dp(200)),
 			app.MaxSize(unit.Dp(800), unit.Dp(400)),
 		)
 
@@ -83,7 +83,6 @@ func update(gtx layout.Context) {
 	if slider.Changed() {
 		duration = time.Duration(math.Round(float64(slider.Value))*100) * time.Millisecond
 	}
-	// WIP(iwaltgen): refactor using time.Tick
 	op.InvalidateOp{}.Add(gtx.Ops)
 }
 
