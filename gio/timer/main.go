@@ -86,11 +86,11 @@ func update(gtx layout.Context) {
 	op.InvalidateOp{}.Add(gtx.Ops)
 }
 
-func progress() int {
+func progress() float32 {
 	if duration == 0 {
 		return 100
 	}
-	return int(math.Round(float64(elapsed)/float64(duration)*1000)) / 10
+	return float32(elapsed) / float32(duration)
 }
 
 func elapsedSeconds() string {
