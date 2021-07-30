@@ -4,18 +4,21 @@ import (
 	"math"
 	"strconv"
 
-	"fyne.io/fyne"
-	"fyne.io/fyne/app"
-	"fyne.io/fyne/layout"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/data/binding"
+	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
 	a := app.New()
 	w := a.NewWindow("Temperature Converter")
 
-	inputC := widget.NewEntry()
-	inputF := widget.NewEntry()
+	bc := binding.NewString()
+	bf := binding.NewString()
+
+	inputC := widget.NewEntryWithData(bc)
+	inputF := widget.NewEntryWithData(bf)
 
 	inputC.OnChanged = func(text string) {
 		cDeg, err := strconv.ParseInt(text, 10, 64)
@@ -24,8 +27,7 @@ func main() {
 		}
 
 		fDeg := math.Round(float64(cDeg)*(9.0/5.0) + 32)
-		inputF.Text = strconv.Itoa(int(fDeg))
-		inputF.Refresh()
+		_ = bf.Set(strconv.Itoa(int(fDeg)))
 	}
 
 	inputF.OnChanged = func(text string) {
@@ -35,19 +37,15 @@ func main() {
 		}
 
 		cDeg := math.Round((float64(fDeg) - 32) * (5.0 / 9.0))
-
-		inputC.Text = strconv.Itoa(int(cDeg))
-		inputC.Refresh()
+		_ = bc.Set(strconv.Itoa(int(cDeg)))
 	}
 
-	w.SetContent(
-		fyne.NewContainerWithLayout(layout.NewGridLayout(4),
-			inputC,
-			widget.NewLabel("Celsius ="),
-			inputF,
-			widget.NewLabel("Fahrenheit"),
-		),
-	)
+	w.SetContent(container.NewGridWithColumns(4,
+		inputC,
+		widget.NewLabel("Celsius ="),
+		inputF,
+		widget.NewLabel("Fahrenheit"),
+	))
 
 	w.ShowAndRun()
 }
