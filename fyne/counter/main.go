@@ -3,9 +3,8 @@ package main
 import (
 	"strconv"
 
-	"fyne.io/fyne"
 	"fyne.io/fyne/app"
-	"fyne.io/fyne/layout"
+	"fyne.io/fyne/container"
 	"fyne.io/fyne/widget"
 )
 
@@ -15,7 +14,7 @@ func main() {
 
 	count := 0
 	value := widget.NewLabel("0")
-	w.SetContent(fyne.NewContainerWithLayout(layout.NewGridLayout(2),
+	w.SetContent(container.NewGridWithColumns(2,
 		value,
 		widget.NewButton("Count", func() {
 			count++
