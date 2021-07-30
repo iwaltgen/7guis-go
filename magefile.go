@@ -13,15 +13,18 @@ import (
 	"github.com/magefile/mage/target"
 )
 
+type BUILD mg.Namespace
+
 func Clean() {
 	os.RemoveAll("build")
 }
 
 func Build() {
-	mg.Deps(BuildGio, BuildFyne, BuildLorca)
+	b := BUILD{}
+	mg.Deps(b.GIO, b.Fyne)
 }
 
-func BuildGio() error {
+func (b BUILD) GIO() error {
 	sources := []string{
 		"./gio/counter",
 		"./gio/temperature-converter",
@@ -30,14 +33,14 @@ func BuildGio() error {
 
 	goexe := mg.GoCmd()
 	for _, source := range sources {
-		if err := build(goexe, source); err != nil {
+		if err := b.build(goexe, source); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func BuildFyne() error {
+func (b BUILD) Fyne() error {
 	sources := []string{
 		"./fyne/counter",
 		"./fyne/temperature-converter",
@@ -45,28 +48,14 @@ func BuildFyne() error {
 
 	goexe := mg.GoCmd()
 	for _, source := range sources {
-		if err := build(goexe, source); err != nil {
+		if err := b.build(goexe, source); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-func BuildLorca() error {
-	sources := []string{
-		"./lorca/counter",
-	}
-
-	goexe := mg.GoCmd()
-	for _, source := range sources {
-		if err := build(goexe, source); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func build(goexe, source string) error {
+func (BUILD) build(goexe, source string) error {
 	dir := filepath.Join("build", filepath.Dir(source))
 	file := filepath.Join("build", source)
 	if midified, err := target.Dir(file, source); err != nil {
