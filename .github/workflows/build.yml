@@ -34,13 +34,9 @@ jobs:
 
     - name: Build Gio
       run: |
-        go run mage.go buildGio
+        go run tools/mage.go build:gio
 
     - name: Build Fyne
       if: matrix.os != 'ubuntu-latest'
       run: |
-        go run mage.go buildFyne
-
-    - name: Build Lorca
-      run: |
-        go run mage.go buildLorca
+        go run tools/mage.go build:fyne

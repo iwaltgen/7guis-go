@@ -58,9 +58,9 @@ func (b BUILD) Fyne() error {
 func (BUILD) build(goexe, source string) error {
 	dir := filepath.Join("build", filepath.Dir(source))
 	file := filepath.Join("build", source)
-	if midified, err := target.Dir(file, source); err != nil {
+	if modified, err := target.Dir(file, source); err != nil {
 		return fmt.Errorf("check target modified error: %w", err)
-	} else if !midified {
+	} else if !modified {
 		return nil
 	}
 
