@@ -40,3 +40,15 @@ jobs:
       if: matrix.os != 'ubuntu-latest'
       run: |
         go run tools/mage.go build:fyne
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: gio-${{ matrix.os }}
+        path: build/gio
+
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: fyne-${{ matrix.os }}
+        path: build/fyne
