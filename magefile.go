@@ -44,6 +44,7 @@ func (b BUILD) Fyne() error {
 	sources := []string{
 		"./fyne/counter",
 		"./fyne/temperature-converter",
+		"./fyne/timer",
 	}
 
 	goexe := mg.GoCmd()
