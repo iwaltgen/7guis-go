@@ -43,7 +43,7 @@ jobs:
     - name: Artifacts Gio
       uses: actions/upload-artifact@v2
       with:
-        name: gio-${{ matrix.os }}
+        name: gio-${{ matrix.os }}-${{ matrix.go }}
         path: build/gio
 
     - name: Artifacts Fyne
