@@ -2,7 +2,7 @@ name: auto merge dependabot
 
 on:
   schedule:
-  - cron: '0 * * * *'
+  - cron: '0 1/3 * * *'
 
 jobs:
   auto-merge-deps:
