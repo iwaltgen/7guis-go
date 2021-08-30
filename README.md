@@ -1,6 +1,6 @@
 # 7GUIs using Go
 
-[![build](https://github.com/iwaltgen/7guis-go/actions/workflows/build.yml/badge.svg)](https://github.com/iwaltgen/7guis-go/actions/workflows/build.yml)
+[![Build](https://github.com/iwaltgen/7guis-go/actions/workflows/build.yml/badge.svg)](https://github.com/iwaltgen/7guis-go/actions/workflows/build.yml)
 [![CodeQL](https://github.com/iwaltgen/7guis-go/actions/workflows/code-ql.yml/badge.svg)](https://github.com/iwaltgen/7guis-go/actions/workflows/code-ql.yml)
 
 An implementation of the [7 GUIs challenges](https://eugenkiss.github.io/7guis/) with Go.
