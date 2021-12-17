@@ -5,7 +5,7 @@ go 1.17
 require (
 	fyne.io/fyne/v2 v2.1.2
 	gioui.org v0.0.0-20210729070555-8cec7e04eb71
-	github.com/magefile/mage v1.11.0
+	github.com/magefile/mage v1.12.0
 )
 
 require (
