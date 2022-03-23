@@ -1,0 +1,5 @@
+{
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-workflow.json": "file:///Users/iwaltgen/workspace/7guis-go/.github/workflows/build.yml"
+	}
+}
