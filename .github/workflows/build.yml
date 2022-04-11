@@ -49,13 +49,13 @@ jobs:
         go run tools/mage.go build:fyne
 
     - name: Artifacts Gio
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: gio-${{ matrix.os }}-${{ matrix.go }}
         path: build/gio
 
     - name: Artifacts Fyne
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: fyne-${{ matrix.os }}-${{ matrix.go }}
         path: build/fyne
