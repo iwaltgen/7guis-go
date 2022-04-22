@@ -7,8 +7,10 @@ import (
 
 // Component implements widget with logic.
 type Component interface {
-	/// Update implements update logic.
-	Update(gtx layout.Context) error
+	/// UpdateFrame implements update frame logic.
+	UpdateFrame(gtx layout.Context) error
+	/// UpdateEvent implements update event logic.
+	UpdateEvent(evt interface{}) error
 	/// Render implements draw widget.
 	Render(gtx layout.Context, theme *material.Theme) layout.Dimensions
 }

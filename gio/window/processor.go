@@ -34,7 +34,7 @@ func (p *Processor) Run(window *app.Window) error {
 		case system.FrameEvent:
 			gtx := layout.NewContext(&ops, e)
 
-			if err := p.component.Update(gtx); err != nil {
+			if err := p.component.UpdateFrame(gtx); err != nil {
 				return err
 			}
 			p.component.Render(gtx, p.theme)
@@ -42,7 +42,9 @@ func (p *Processor) Run(window *app.Window) error {
 			e.Frame(gtx.Ops)
 
 		default:
-			// log.Printf("window event: %#v\n", e)
+			if err := p.component.UpdateEvent(e); err != nil {
+				return err
+			}
 		}
 	}
 	return nil

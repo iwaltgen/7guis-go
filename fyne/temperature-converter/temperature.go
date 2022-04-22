@@ -22,6 +22,7 @@ type Temperature struct {
 	inputFahrenheit   *widget.Entry
 }
 
+// Render creates fyne.CanvasObject.
 func (t *Temperature) Render() fyne.CanvasObject {
 	t.inputCelsius.OnChanged = func(text string) {
 		celsius, err := strconv.ParseInt(text, 10, 64)
