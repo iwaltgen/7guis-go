@@ -52,3 +52,5 @@ bin/*
 build/*
 !mage
 .envrc
+.tool-versions
+
