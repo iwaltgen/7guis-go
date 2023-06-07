@@ -3,13 +3,13 @@ module github.com/iwaltgen/7guis-go
 go 1.17
 
 require (
-	fyne.io/fyne/v2 v2.3.4
+	fyne.io/fyne/v2 v2.3.5
 	gioui.org v0.0.0-20210729070555-8cec7e04eb71
 	github.com/magefile/mage v1.15.0
 )
 
 require (
-	fyne.io/systray v1.10.1-0.20230403195833-7dc3c09283d6 // indirect
+	fyne.io/systray v1.10.1-0.20230602210930-b6a2d6ca2a7b // indirect
 	gioui.org/cpu v0.0.0-20210727122813-41509bcd3462 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fredbi/uri v0.1.0 // indirect
